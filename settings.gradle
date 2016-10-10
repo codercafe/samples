@@ -1,0 +1,3 @@
+rootProject.name = 'codecafe-samples'
+
+include '01_Testing'
