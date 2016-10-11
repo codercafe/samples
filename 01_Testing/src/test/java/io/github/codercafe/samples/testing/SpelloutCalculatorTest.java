@@ -26,7 +26,7 @@ public class SpelloutCalculatorTest {
 
     @Test
     public void add() {
-        SpelloutCalculator calculator = new SpelloutCalculator();
+        NumberCalculator calculator = new NumberCalculator();
         assertEquals("fifteen", calculator.add(12, 3));
         assertEquals("fourteen", calculator.add(10, 4));
         assertEquals("minus seven", calculator.add(7, -14));
@@ -44,7 +44,7 @@ public class SpelloutCalculatorTest {
 
     @Test
     public void divide() {
-        SpelloutCalculator calculator = new SpelloutCalculator();
+        NumberCalculator calculator = new NumberCalculator();
         assertEquals("four", calculator.divide(12, 3));
         assertEquals("two point five", calculator.divide(10, 4));
         assertEquals("minus two point five", calculator.divide(-10, 4));
@@ -52,13 +52,13 @@ public class SpelloutCalculatorTest {
 
     @Test(expected = ArithmeticException.class)
     public void divideByNull() {
-        SpelloutCalculator calculator = new SpelloutCalculator();
+        NumberCalculator calculator = new NumberCalculator();
         calculator.divide(12, 0);
     }
 
     @Test
     public void divideByNullTestRule() {
-        SpelloutCalculator calculator = new SpelloutCalculator();
+        NumberCalculator calculator = new NumberCalculator();
         expected.expect(ArithmeticException.class);
         expected.expectMessage("Cannot divide by null");
         calculator.divide(12, 0);
@@ -67,27 +67,27 @@ public class SpelloutCalculatorTest {
     @Ignore("Order does matter")
     @Test
     public void primeFactorization() {
-        SpelloutCalculator calculator = new SpelloutCalculator();
+        NumberCalculator calculator = new NumberCalculator();
         assertEquals(calculator.primeFactorization(35), Arrays.asList("five", "seven"));
         assertEquals(calculator.primeFactorization(35), Arrays.asList("seven", "five"));
     }
 
     @Test
     public void divideWithMatchers() {
-        SpelloutCalculator calculator = new SpelloutCalculator();
+        NumberCalculator calculator = new NumberCalculator();
         assertThat(calculator.divide(12, 3), is(equalTo("four")));
         assertThat(calculator.divide(-10, 4), is(equalTo("minus two point five")));
     }
 
     @Test
     public void primeFactorizationWithMatchers() {
-        SpelloutCalculator calculator = new SpelloutCalculator();
+        NumberCalculator calculator = new NumberCalculator();
         assertThat(calculator.primeFactorization(350), hasItems("two", "five", "seven"));
     }
 
     @Test
     public void primeFactorizationCustomMatcher() {
-        SpelloutCalculator calculator = new SpelloutCalculator();
+        NumberCalculator calculator = new NumberCalculator();
         assertThat(calculator.primeFactorization(350), hasAllItems("two", "five", "five", "seven"));
         assertThat(calculator.primeFactorization(350), not(hasAllItems("two", "five", "seven")));
     }

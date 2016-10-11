@@ -7,12 +7,12 @@ import java.text.ParseException;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
-public class SpellinCalculatorTest {
+public class WordCalculatorTest {
 
     @Test
     public void add() throws ParseException {
-        SpellinCalculator calculator = new SpellinCalculator();
-        assertThat(calculator.add("three", "two"), is(equalTo("five")));
+        WordCalculator calculator = new WordCalculator();
+        assertThat(calculator.add("three", "two"), is(equalTo(5L)));
     }
 
     @Test

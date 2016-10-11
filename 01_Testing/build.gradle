@@ -15,7 +15,7 @@ dependencies {
     compile(["org.slf4j:slf4j-api:$slf4jVersion",
              "com.google.code.findbugs:jsr305:3.0.1",
              "com.google.guava:guava:$guavaVersion",
-            "com.ibm.icu:icu4j:57.1"
+             "com.ibm.icu:icu4j:57.1"
     ])
     testCompile("junit:junit:4.12") {
         exclude group: 'org.hamcrest', module: 'hamcrest-core'
