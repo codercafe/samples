@@ -1,15 +1,11 @@
 package io.github.codercafe.samples.testing;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.testing.EqualsTester;
 import com.google.common.testing.NullPointerTester;
 import com.google.common.testing.SerializableTester;
 import org.junit.Test;
 
 import java.text.ParseException;
-import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -44,13 +40,12 @@ public class StringVector3DTest {
 
 
         // How about String constructor (e.g. new StringVector3D("three", "two", "one") )?
-        new EqualsTester().addEqualityGroup(new StringVector3D(1, 2, 3), new StringVector3D("one", "two", "three"))
-                .addEqualityGroup(new StringVector3D(0, 0, 0), StringVector3D.ZERO)
+        new EqualsTester()
+                .addEqualityGroup(new StringVector3D(1, 2, 3),
+                        new StringVector3D("one", "two", "three"))
+                .addEqualityGroup(new StringVector3D(0, 0, 0),
+                        StringVector3D.ZERO)
                 .testEquals();
-
-        // Immutable collections with Guava
-        List<String> strs2 = ImmutableList.of("A", "B", "C");
-        Map<Integer, String> int2Str2 = ImmutableMap.of(1, "a", 2, "b", 3, "c");
     }
 
 }
