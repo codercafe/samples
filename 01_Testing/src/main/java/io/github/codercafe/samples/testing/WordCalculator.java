@@ -17,16 +17,15 @@ public class WordCalculator {
 
     private final RuleBasedNumberFormat formatter = new RuleBasedNumberFormat(ENGLISH, SPELLOUT);
 
-    public long add(String x, String y) throws ParseException {
+    public int add(String x, String y) throws ParseException {
         return parseInt(x) + parseInt(y);
     }
 
-    public long subtract(String minuend, String subtrahend) throws ParseException {
+    public int subtract(String minuend, String subtrahend) throws ParseException {
         return parseInt(minuend) - parseInt(subtrahend);
     }
 
-
-    public long multiply(String x, String y) throws ParseException {
+    public int multiply(String x, String y) throws ParseException {
         return parseInt(x) * parseInt(y);
     }
 
@@ -50,7 +49,7 @@ public class WordCalculator {
         return factors;
     }
 
-    private int parseInt(String number) throws ParseException {
+    public int parseInt(String number) throws ParseException {
         return formatter.parse(number).intValue();
     }
 }

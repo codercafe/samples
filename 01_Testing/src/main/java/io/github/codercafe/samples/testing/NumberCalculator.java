@@ -51,7 +51,7 @@ public class NumberCalculator {
         return factors;
     }
 
-    private String format(Object number) {
+    public String format(Object number) {
         return formatter.format(number);
     }
 }
