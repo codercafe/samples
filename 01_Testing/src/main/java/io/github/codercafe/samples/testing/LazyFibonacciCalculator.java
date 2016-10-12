@@ -1,8 +1,6 @@
 package io.github.codercafe.samples.testing;
 
 import com.ibm.icu.text.RuleBasedNumberFormat;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
@@ -13,7 +11,6 @@ import static com.ibm.icu.util.ULocale.ENGLISH;
 public class LazyFibonacciCalculator {
 
     private final RuleBasedNumberFormat formatter = new RuleBasedNumberFormat(ENGLISH, SPELLOUT);
-    private static Logger logger = LoggerFactory.getLogger(LazyFibonacciCalculator.class);
 
     private AtomicReference<String> value = new AtomicReference<>();
     private final Random random = new Random();
@@ -29,11 +26,9 @@ public class LazyFibonacciCalculator {
                 lastFibonacci = currentFibonacci;
                 currentFibonacci = result;
 
-                // let's be lazy
                 try {
-                    Thread.sleep(50 + random.nextInt(1000));
-                } catch (InterruptedException ex) {
-                    logger.warn("Couldn't be lazy.", ex);
+                    Thread.sleep(50 + random.nextInt(1000)); // let's wait
+                } catch (InterruptedException ignored) {
                 }
 
             }
