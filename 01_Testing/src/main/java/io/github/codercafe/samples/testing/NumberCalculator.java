@@ -25,7 +25,7 @@ public class NumberCalculator {
     }
 
     public String multiply(int x, int y) {
-        return format(x + y);
+        return format(x * y);
     }
 
     public String divide(int dividend, int divisor) {

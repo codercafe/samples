@@ -1,21 +1,13 @@
 package io.github.codercafe.samples.testing;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
 
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+import static io.github.codercafe.samples.testing.matcher.CustomCollectionItemsMatcher.hasAllItems;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -24,11 +16,6 @@ public class NumberCalculatorTest {
 
     @Rule
     public final ExpectedException expected = ExpectedException.none();
-
-    @Before
-    public void setUp() {
-
-    }
 
     @Test
     public void add() {
@@ -40,12 +27,18 @@ public class NumberCalculatorTest {
 
     @Test
     public void subtract() {
-
+        NumberCalculator calculator = new NumberCalculator();
+        assertEquals("nine", calculator.subtract(12, 3));
+        assertEquals("minus fourteen", calculator.subtract(-10, 4));
+        assertEquals("twenty-one", calculator.subtract(7, -14));
     }
 
     @Test
     public void multiply() {
-
+        NumberCalculator calculator = new NumberCalculator();
+        assertEquals("thirty-six", calculator.multiply(12, 3));
+        assertEquals("minus forty", calculator.multiply(-10, 4));
+        assertEquals("minus ninety-eight", calculator.multiply(7, -14));
     }
 
     @Test
@@ -96,38 +89,5 @@ public class NumberCalculatorTest {
         NumberCalculator calculator = new NumberCalculator();
         assertThat(calculator.primeFactorization(350), hasAllItems("two", "five", "five", "seven"));
         assertThat(calculator.primeFactorization(350), not(hasAllItems("two", "five", "seven")));
-    }
-
-    /**
-     *
-     * @param items
-     * @return A Matcher all items in arbitrary order and correct number of occurrences.
-     */
-    private <T> Matcher<Collection<T>> hasAllItems(final T... items) {
-        return new TypeSafeMatcher<Collection<T>>() {
-
-            @Override
-            public boolean matchesSafely(final Collection<T> item) {
-                if (items.length != item.size()) {
-                    return false;
-                }
-
-                Map<T, Long> counts = item
-                        .stream()
-                        .collect(groupingBy(element -> element, counting()));
-                for (T value : counts.keySet()) {
-                    if (Collections.frequency(item, value) != counts.get(value)) {
-                        return false;
-                    }
-                }
-
-                return true;
-            }
-
-            @Override
-            public void describeTo(final Description description) {
-                description.appendText("a collection containing ").appendValue(items).appendText( " in arbitrary order");
-            }
-        };
     }
 }
