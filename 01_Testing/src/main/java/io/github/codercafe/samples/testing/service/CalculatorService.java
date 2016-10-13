@@ -22,4 +22,12 @@ public class CalculatorService {
             throw new CalculatorServiceException("Something went wrong", ex);
         }
     }
+
+    public int mixedSubstract(int a, String b) {
+        try {
+            return wordCalculator.subtract(numberCalculator.format(a), b);
+        } catch (ParseException ex) {
+            throw new CalculatorServiceException("Something went wrong", ex);
+        }
+    }
 }

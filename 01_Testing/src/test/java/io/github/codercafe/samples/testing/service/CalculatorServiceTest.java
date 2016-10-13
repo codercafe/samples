@@ -2,7 +2,9 @@ package io.github.codercafe.samples.testing.service;
 
 import io.github.codercafe.samples.testing.NumberCalculator;
 import io.github.codercafe.samples.testing.WordCalculator;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
@@ -10,6 +12,8 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.internal.util.reflection.Whitebox;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import java.text.ParseException;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -42,6 +46,9 @@ public class CalculatorServiceTest {
 
     @Captor
     ArgumentCaptor<Integer> captor;
+
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
 
     @Test
     public void testMixedAdd() throws Exception {
@@ -76,5 +83,17 @@ public class CalculatorServiceTest {
 
         assertThat(captor.getAllValues(), contains(123, 42));
         verify(wordCalculator, never()).add(anyString(), anyString());
+    }
+
+    @Test
+    public void testMixedAddThrowsServiceException() throws Exception {
+        CalculatorService calculatorService = new CalculatorService(wordCalculator);
+        Whitebox.setInternalState(calculatorService, "numberCalculator", numberCalculator);
+
+        when(wordCalculator.parseInt(anyString())).thenReturn(42);
+        when(numberCalculator.add(anyInt(), anyInt())).thenThrow(ParseException.class);
+
+        exception.expect(CalculatorServiceException.class);
+        calculatorService.mixedAdd(123, "123");
     }
 }
