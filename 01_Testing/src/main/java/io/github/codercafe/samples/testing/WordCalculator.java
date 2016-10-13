@@ -10,8 +10,8 @@ import static com.ibm.icu.text.RuleBasedNumberFormat.SPELLOUT;
 import static com.ibm.icu.util.ULocale.ENGLISH;
 
 /**
- * This class represents a simple calculator taking words as input and returns numbers (i.e. {@link Long} and
- * {@link Double}).
+ * This class represents a simple calculator taking words as input and returns numbers (i.e. {@link Integer} and
+ * {@link Double}). The calculator neither mathematically accurate (e.g. Integer overflow etc) nor threadsafe.
  */
 public class WordCalculator {
 
@@ -33,10 +33,10 @@ public class WordCalculator {
         return (double) parseInt(dividend) / parseInt(divisor);
     }
 
-    public List<Long> primeFactorization(int number) {
-        long rest = number;
-        List<Long> factors = new ArrayList<>();
-        for (long i = 2; i <= rest / i; i++) {
+    public List<Integer> primeFactorization(int number) {
+        int rest = number;
+        List<Integer> factors = new ArrayList<>();
+        for (int i = 2; i <= rest / i; i++) {
             while (rest % i == 0) {
                 factors.add(i);
                 rest /= i;

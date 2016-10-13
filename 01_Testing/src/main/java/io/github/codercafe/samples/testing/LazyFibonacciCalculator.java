@@ -27,7 +27,7 @@ public class LazyFibonacciCalculator {
                 currentFibonacci = result;
 
                 try {
-                    Thread.sleep(50 + random.nextInt(1000)); // let's wait
+                    Thread.sleep(50 + random.nextInt(500)); // let's wait
                 } catch (InterruptedException ignored) {
                 }
 

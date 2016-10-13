@@ -12,7 +12,7 @@ public class WordCalculatorTest {
     @Test
     public void add() throws ParseException {
         WordCalculator calculator = new WordCalculator();
-        assertThat(calculator.add("three", "two"), is(equalTo(5L)));
+        assertThat(calculator.add("three", "two"), is(equalTo(5)));
     }
 
     @Test

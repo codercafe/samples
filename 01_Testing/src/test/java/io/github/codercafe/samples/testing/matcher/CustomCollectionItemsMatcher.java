@@ -15,15 +15,15 @@ import static java.util.stream.Collectors.groupingBy;
  * This class is a matcher verifying a {@link Collection} of Strings holds all given items in arbitrary order and
  * correct number of occurrences.
  */
-public class CustomCollectionItemsMatcher extends TypeSafeMatcher<Collection<String>> {
+public final class CustomCollectionItemsMatcher extends TypeSafeMatcher<Collection<String>> {
 
     private final String[] items;
 
-    public CustomCollectionItemsMatcher(String... items) {
+    private CustomCollectionItemsMatcher(String... items) {
         this.items = items;
     }
 
-    public static Matcher<Collection<String>> hasAllItems( String... items) {
+    public static Matcher<Collection<String>> hasAllItems(String... items) {
         return new CustomCollectionItemsMatcher(items);
     }
 
@@ -33,20 +33,16 @@ public class CustomCollectionItemsMatcher extends TypeSafeMatcher<Collection<Str
             return false;
         }
 
-        Map<String, Long> counts = item
-                .stream()
+        Map<String, Long> counts = item.stream()
                 .collect(groupingBy(element -> element, counting()));
-        for (String value : counts.keySet()) {
-            if (Collections.frequency(item, value) != counts.get(value)) {
-                return false;
-            }
-        }
-
-        return true;
+        return !counts.keySet().stream()
+                .anyMatch(value -> Collections.frequency(item, value) != counts.get(value));
     }
 
     @Override
     public void describeTo(Description description) {
-        description.appendText("a collection containing ").appendValue(items).appendText( " in arbitrary order");
+        description.appendText("a collection containing ")
+                .appendValue(items)
+                .appendText(" in arbitrary order");
     }
 }
