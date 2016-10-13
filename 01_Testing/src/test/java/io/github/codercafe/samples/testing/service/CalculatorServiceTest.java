@@ -14,7 +14,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.contains;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -45,12 +45,12 @@ public class CalculatorServiceTest {
 
     @Test
     public void testMixedAdd() throws Exception {
-        CalculatorService calculatorService = new CalculatorService(wordCalculator);
         when(wordCalculator.parseInt(anyString())).thenReturn(42);
 
+        CalculatorService calculatorService = new CalculatorService(wordCalculator);
         String result = calculatorService.mixedAdd(42, "123");
-        assertThat(result, is(equalTo("eighty-four")));
 
+        assertThat(result, is(equalTo("eighty-four")));
         verify(wordCalculator, never()).add(anyString(), anyString());
     }
 
@@ -60,7 +60,7 @@ public class CalculatorServiceTest {
         String result = calculatorService.mixedAdd(42, "42");
         assertThat(result, is(equalTo("eighty-four")));
 
-        verify(wordCalculatorSpy, times(1)).parseInt(anyString());
+        verify(wordCalculatorSpy, times(1)).parseInt("42");
         verify(wordCalculatorSpy, never()).add(anyString(), anyString());
     }
 
@@ -73,8 +73,8 @@ public class CalculatorServiceTest {
         when(numberCalculator.add(captor.capture(), captor.capture())).thenReturn("123");
 
         calculatorService.mixedAdd(123, "123");
-        assertThat(captor.getAllValues(), containsInAnyOrder(123, 42));
 
+        assertThat(captor.getAllValues(), contains(123, 42));
         verify(wordCalculator, never()).add(anyString(), anyString());
     }
 }
