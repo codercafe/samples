@@ -10,15 +10,15 @@ import static com.ibm.icu.text.RuleBasedNumberFormat.SPELLOUT;
 import static com.ibm.icu.util.ULocale.ENGLISH;
 
 /**
- *
+ * This class is for educational purpose only and not intended for proper usage ;-) .
  */
-public class StringVector3D implements Serializable {
+public class StringPoint3D implements Serializable {
 
-    public static final StringVector3D ZERO = new StringVector3D(0, 0, 0);
+    public static final StringPoint3D ZERO = new StringPoint3D(0, 0, 0);
     public final String x, y, z;
     private final RuleBasedNumberFormat formatter = new RuleBasedNumberFormat(ENGLISH, SPELLOUT);
 
-    public StringVector3D(String x, String y, String z) throws ParseException {
+    public StringPoint3D(String x, String y, String z) throws ParseException {
         requireNonNull(x, y, z);
         parsable(x, y, z);
         this.x = x;
@@ -26,7 +26,7 @@ public class StringVector3D implements Serializable {
         this.z = z;
     }
 
-    public StringVector3D(int x, int y, int z) {
+    public StringPoint3D(int x, int y, int z) {
         this.x = format(x);
         this.y = format(y);
         this.z = format(z);
@@ -60,7 +60,7 @@ public class StringVector3D implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        StringVector3D that = (StringVector3D) o;
+        StringPoint3D that = (StringPoint3D) o;
         return Objects.equals(x, that.x) &&
                 Objects.equals(y, that.y) &&
                 Objects.equals(z, that.z);

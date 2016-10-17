@@ -35,7 +35,11 @@ public class LazyFibonacciCalculatorTest {
     public void calculateWithAwaitility() {
         LazyFibonacciCalculator calculator = new LazyFibonacciCalculator();
         calculator.calculate(20);
-        await().until(calculator::getResult, is(equalTo("six thousand seven hundred sixty-five"))); // callable
-        await().untilCall(to(calculator).getResult(), is(equalTo("six thousand seven hundred sixty-five"))); // proxy
+        // callable
+        await().until(calculator::getResult,
+                is(equalTo("six thousand seven hundred sixty-five")));
+        // proxy
+        await().untilCall(to(calculator).getResult(),
+                is(equalTo("six thousand seven hundred sixty-five")));
     }
 }
