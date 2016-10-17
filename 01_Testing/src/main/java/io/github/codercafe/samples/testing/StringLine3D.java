@@ -32,7 +32,7 @@ public class StringLine3D {
             double x = parse(start.x) - parse(end.x);
             double y = parse(start.y) - parse(end.y);
             double z = parse(start.z) - parse(end.z);
-            return Math.sqrt(x*x + y*y + z*z);
+            return Math.sqrt(x * x + y * y + z * z);
         } catch (ParseException ex) {
             throw new IllegalStateException("Could not parse value of a given vector. Should not happen!", ex);
         }
