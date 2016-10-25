@@ -12,8 +12,8 @@ import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 /**
- * This class is a matcher verifying a {@link Collection} of Strings holds all given items in arbitrary order and
- * correct number of occurrences.
+ * This class implements a matcher which verifies that a {@link Collection} of Strings holds all given items in
+ * arbitrary order and number of occurrences.
  */
 public final class CustomCollectionItemsMatcher extends TypeSafeMatcher<Collection<String>> {
 

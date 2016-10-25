@@ -9,8 +9,9 @@ import static com.ibm.icu.text.RuleBasedNumberFormat.SPELLOUT;
 import static com.ibm.icu.util.ULocale.ENGLISH;
 
 /**
- * This class represents a simple calculator for testing. It takes {@link Integer}s as input and returns a word
- * representation of the result (i.e. {@link String}. The calculator neither mathematically accurate nor threadsafe.
+ * This class represents a simple calculator for testing. It takes int's as input and returns a word representation
+ * of the result (i.e. {@link String}.
+ * Attention: The calculator is neither mathematically accurate nor threadsafe.
  */
 public class NumberCalculator {
 

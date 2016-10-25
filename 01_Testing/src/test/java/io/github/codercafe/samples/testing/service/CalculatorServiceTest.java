@@ -51,7 +51,7 @@ public class CalculatorServiceTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testMixedAdd() throws Exception {
+    public void mixedAdd() throws Exception {
         when(wordCalculator.parseInt(anyString())).thenReturn(42);
 
         CalculatorService calculatorService = new CalculatorService(wordCalculator);
@@ -62,7 +62,7 @@ public class CalculatorServiceTest {
     }
 
     @Test
-    public void testMixedAddWithSpy() throws Exception {
+    public void mixedAddWithSpy() throws Exception {
         CalculatorService calculatorService = new CalculatorService(wordCalculatorSpy);
         String result = calculatorService.mixedAdd(42, "42");
         assertThat(result, is(equalTo("eighty-four")));
@@ -72,7 +72,7 @@ public class CalculatorServiceTest {
     }
 
     @Test
-    public void testMixedAddWithWhiteboxAndCaptor() throws Exception {
+    public void mixedAddWithWhiteboxAndCaptor() throws Exception {
         CalculatorService calculatorService = new CalculatorService(wordCalculator);
         Whitebox.setInternalState(calculatorService, "numberCalculator", numberCalculator);
 
@@ -86,7 +86,7 @@ public class CalculatorServiceTest {
     }
 
     @Test
-    public void testMixedAddThrowsServiceException() throws Exception {
+    public void mixedAddThrowsServiceException() throws Exception {
         CalculatorService calculatorService = new CalculatorService(wordCalculator);
         Whitebox.setInternalState(calculatorService, "numberCalculator", numberCalculator);
 

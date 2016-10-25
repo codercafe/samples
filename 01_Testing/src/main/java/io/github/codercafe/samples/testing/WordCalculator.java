@@ -10,8 +10,8 @@ import static com.ibm.icu.text.RuleBasedNumberFormat.SPELLOUT;
 import static com.ibm.icu.util.ULocale.ENGLISH;
 
 /**
- * This class represents a simple calculator taking words as input and returns numbers (i.e. {@link Integer} and
- * {@link Double}). The calculator neither mathematically accurate (e.g. Integer overflow etc) nor threadsafe.
+ * This class represents a simple calculator taking words as input and returns numbers (i.e. int and double).
+ * The calculator is neither mathematically accurate (e.g. Integer overflow etc.) nor threadsafe.
  */
 public class WordCalculator {
 

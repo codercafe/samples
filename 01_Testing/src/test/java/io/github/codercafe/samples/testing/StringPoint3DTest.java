@@ -38,7 +38,6 @@ public class StringPoint3DTest {
         assertTrue(point.equals(new StringPoint3D(3, 2, 1)));   // same parameters result in equality
         assertEquals(point.hashCode(), new StringPoint3D(3, 2, 1).hashCode()); // hash code matches on equality
 
-
         // How about String constructor (e.g. new StringPoint3D("three", "two", "one") )?
         new EqualsTester()
                 .addEqualityGroup(new StringPoint3D(1, 2, 3),
