@@ -9,14 +9,14 @@ public class SoftwareEngineer {
     public final long phone;
     public final URL gitHub;
 
+    public SoftwareEngineer(String name, long phone) {
+        this(name, phone, null);
+    }
+
     public SoftwareEngineer(String name, long phone, URL gitHub) {
         this.name = name;
         this.phone = phone;
         this.gitHub = gitHub;
-    }
-
-    public SoftwareEngineer(String name, long phone) {
-        this(name, phone, null);
     }
 
     @Override

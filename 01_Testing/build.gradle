@@ -26,6 +26,7 @@ dependencies {
                  "org.mockito:mockito-all:1.10.+",
                  "org.slf4j:slf4j-simple:$slf4jVersion",
                  "com.google.guava:guava-testlib:$guavaVersion",
-                 "org.awaitility:awaitility:2.0.+"
+                 "org.awaitility:awaitility:2.0.+",
+                 "org.codehaus.groovy:groovy-all:2.4.+"
     ])
 }
