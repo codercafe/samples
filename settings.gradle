@@ -1,3 +1,4 @@
 rootProject.name = 'codecafe-samples'
 
 include '01_Testing'
+include '01_Testing_JerseyTest'
