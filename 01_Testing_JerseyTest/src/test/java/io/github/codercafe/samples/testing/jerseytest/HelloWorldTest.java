@@ -37,14 +37,14 @@ public class HelloWorldTest extends JerseyTest {
     }
 
     @Test
-    public void testHelloWorld() throws Exception {
-        Hello hello = target("hello").request().get(Hello.class);
-        assertThat(hello.hello, is(equalTo("World")));
+    public void testHelloWorldIndent() throws Exception {
+        String result = target("hello").request().get(String.class);
+        logger.info("Response: {}", result);
     }
 
     @Test
-    public void testHelloWorldIndent() throws Exception {
-        String hello = target("hello").request().get(String.class);
-        logger.info(hello);
+    public void testHelloWorld() throws Exception {
+        Hello hello = target("hello").request().get(Hello.class);
+        assertThat(hello.hello, is(equalTo("World")));
     }
 }

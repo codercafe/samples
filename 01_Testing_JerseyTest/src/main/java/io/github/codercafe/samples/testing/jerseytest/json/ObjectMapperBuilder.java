@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 public class ObjectMapperBuilder {
 
     /**
-     * All the defaults for now, just for explanation.
+     * Almost only defaults, just an example
      *
      * @return
      */
